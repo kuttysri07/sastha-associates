@@ -18,10 +18,11 @@ const Buyerpage = () => {
 
     useEffect(() => {
       const getbuyerdata = () => {
-        axios.get(`${url}getproperty?` + searchparams.toString())
+        axios.get(`${url}getnewhouses` + searchparams.toString())
             .then(res => {
                 if (res.data.length === 0) {
                   setErr("No user found"); // Set the message if no users are found
+                  setLoading(false); // Set loading false once data is fetched
                 } else {
                   setErr(null); // Clear error if data is found
                   setBuyerData(res.data);

@@ -37,6 +37,10 @@ const PropertySchema = new mongoose.Schema({
         nine: { type: Boolean, default: true },
         ten: { type: Boolean, default: true }
     },
+    status: {  // Update role to accept an object with "dealer" and "franchise"
+        dtcp: { type: Boolean, default: false },
+        rera: { type: Boolean, default: false }
+    }
    
 });
 

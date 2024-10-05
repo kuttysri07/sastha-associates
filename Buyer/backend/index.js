@@ -4,6 +4,7 @@ const cors = require("cors");
 require('dotenv').config();
 const mongoose = require("mongoose");
 const PropertyModel = require("./Model/PropertyModel");
+const NewHouseModel = require("./Model/NewHouseModel");
 const path = require("path");
 
 app.use(cors());
@@ -26,19 +27,7 @@ app.post("/propertyregister", async (req, res) => {
 });
 
 
-
-// // get route for signup
-//   app.get("/getproperty", async (req, res) => {
-//     try {
-//       const getUser = await PropertyModel.find();
-//       res.json(getUser); // Send the retrieved users as JSON response
-//     } catch (error) {
-//       console.log(error.message);
-//       res.status(500).json({ error: "Internal server error" }); // Optional: handle error and send a response
-//     }
-//   });
-
-  app.put('/updatesellerdata/:id', (req, res) => {
+  app.put('/updateproperty/:id', (req, res) => {
     const { id } = req.params;
     const { approve } = req.body;
   
@@ -58,19 +47,11 @@ app.post("/propertyregister", async (req, res) => {
     }
   });
 
-  app.put('/updateseller/:id', (req, res) => {
-    const { id } = req.params;
-    const { numberhide } = req.body;
-  
-    SellerModel.findByIdAndUpdate(id, { numberhide}, { new: true })
-        .then(updatedUser => res.json(updatedUser))
-        .catch(err => res.status(500).json({ error: err.message }));
-  });
 
   app.get("/getproperty", async (req, res) => {
     try {
       const query = {
-        approve: true // Ensure only approved users are fetched
+        approve: false // Ensure only approved users are fetched
     };
      // Add filters for name and/or state if provided
      if (req.query.industry) {
@@ -98,6 +79,45 @@ if (req.query.district) {
       };
   }
       const getUser = await PropertyModel.find(query);
+      res.json(getUser); // Send the retrieved users as JSON response
+    } catch (error) {
+      console.log(error.message);
+      res.status(500).json({ error: "Internal server error" }); // Optional: handle error and send a response
+    }
+  });
+
+  
+  app.get("/getnewhouses", async (req, res) => {
+    try {
+      const query = {
+        approve: false // Ensure only approved users are fetched
+    };
+     // Add filters for name and/or state if provided
+     if (req.query.industry) {
+      query.industry = {
+          $regex: req.query.industry,  // Search for partial matches
+          $options: "i"  // Case-insensitive search
+      };
+  }
+  if (req.query.category) {
+    query.category = {
+        $regex: req.query.category,  // Search for partial matches
+        $options: "i"  // Case-insensitive search
+    };
+}
+if (req.query.district) {
+  query.district = {
+      $regex: req.query.district,  // Search for partial matches
+      $options: "i"  // Case-insensitive search
+  };
+}
+  if (req.query.state) {
+      query.state = {
+          $regex: req.query.state,  // Search for partial matches
+          $options: "i"  // Case-insensitive search
+      };
+  }
+      const getUser = await NewHouseModel.find(query);
       res.json(getUser); // Send the retrieved users as JSON response
     } catch (error) {
       console.log(error.message);

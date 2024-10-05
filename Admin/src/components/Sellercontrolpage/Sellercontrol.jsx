@@ -30,7 +30,7 @@ const Sellercontrol = () => {
 
     // Update the user approval status in the backend
     axios
-      .put(`${APIURL}updatesellerdata/${id}`, { approve: newApproveStatus })
+      .put(`${APIURL}updateproperty/${id}`, { approve: newApproveStatus })
       .then((res) => {
         console.log(res.data);
 
@@ -132,6 +132,13 @@ const Sellercontrol = () => {
                                 <input type='checkbox' checked={data.plot.eight} readOnly />
                                 <input type='checkbox' checked={data.plot.nine} readOnly />
                                 <input type='checkbox' checked={data.plot} readOnly />
+
+                                <label>Status Approvel:</label>
+                                <label>DTCP</label>
+                                <input type='checkbox' checked={data.status.dtcp} readOnly />
+                                <label>RERA</label>
+                                <input type='checkbox' checked={data.status.rera} readOnly />
+
       
 
 

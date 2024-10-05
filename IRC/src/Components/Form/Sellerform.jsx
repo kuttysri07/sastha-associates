@@ -46,6 +46,10 @@ const Sellerform = () => {
     ten: true
 
   });
+  const [status, setStatus] = useState({
+    dtcp:false,
+    rera:false
+  }); 
   const [approve] = useState(false);
   const [loading, setLoading] = useState(false); // Track loading state
   const [submit, setSubmit] = useState(false);
@@ -77,7 +81,8 @@ const Sellerform = () => {
   launchDate,
   plotPrice,
   plot,
-  approve
+  approve,
+  status
   };
 
 
@@ -1055,6 +1060,30 @@ const handleChangeImg = async (e) => {
 
       <label className="sellerform-label">Plot Price</label>
       <input className="sellerform-input" type="number" value={plotPrice} onChange={(e) => setPlotPrice(e.target.value)} />
+
+      <label className="sellerform-label">Active Status</label>
+                      <label>DTCP</label>
+                      <input
+                        type="checkbox"
+                        checked={status.dtcp}
+                        onChange={(e) =>
+                          setStatus((prevstatus) => ({
+                            ...prevstatus,
+                            dtcp: e.target.checked,
+                          }))
+                        }
+                      />
+                        <label>RERA</label>
+                      <input
+                        type="checkbox"
+                        checked={status.rera}
+                        onChange={(e) =>
+                          setStatus((prevstatus) => ({
+                            ...prevstatus,
+                            rera: e.target.checked,
+                          }))
+                        }
+                      />
 
         <label className="sellerform-label">Closed Plots / Remaining Plot</label>
         <div className="sellerform-role">

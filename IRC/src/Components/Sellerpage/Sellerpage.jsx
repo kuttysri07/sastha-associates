@@ -122,11 +122,11 @@ const Sellerpage = () => {
                                         <td>{data.noOfPlots}</td>
                                     </tr>
                                     <tr>
-                                        <th>Plot Size (Min)</th>
+                                        <th>Plot Size (Min sq.ft)</th>
                                         <td>{data.plotSizeMin}</td>
                                     </tr>
                                     <tr>
-                                        <th>Plot Size (Max)</th>
+                                        <th>Plot Size (Max sq.ft)</th>
                                         <td>{data.plotSizeMax}</td>
                                     </tr>
                                     <tr>
@@ -136,6 +136,10 @@ const Sellerpage = () => {
                                     <tr>
                                         <th>Nearby Spots</th>
                                         <td>{data.nearbySpots}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Status Approvel</th>
+                                        <td>{data.status.dtcp&&data.status.rera ? "DTCP AND RERA " :data.status.dtcp ? "DTCP" :data.status.rera? "RERA Facing" :""}</td>
                                     </tr>
                                     <tr>
                                         <th>Legalities</th>
@@ -158,7 +162,7 @@ const Sellerpage = () => {
                                         <td>{data.launchDate}</td>
                                     </tr>
                                     <tr>
-                                        <th>Plot Price</th>
+                                        <th>Plot Price (sq.ft)</th>
                                         <td>{data.plotPrice}</td>
                                     </tr>
                         <tr>

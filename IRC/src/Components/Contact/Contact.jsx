@@ -16,7 +16,7 @@ const Contact = () => {
         </div>
         <h3>VISIT US</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        <p className="contact-detail">2 Elizabeth, London, UK</p>
+        <p className="contact-detail">Thindal, Erode </p>
       </div>
 
       <div className="contact-item">
@@ -24,8 +24,8 @@ const Contact = () => {
           <img src={phone} alt="Call Us" />
         </div>
         <h3>CALL US</h3>
-        <p>Bibendum bibendum quis sit amet enim.</p>
-        <p className="contact-detail">+44 (0) 203 116 7711</p>
+        <p>Jio Sarani Office</p>
+        <p className="contact-detail">+919363412625, 8643013005</p>
       </div>
 
       <div className="contact-item">
@@ -34,7 +34,7 @@ const Contact = () => {
         </div>
         <h3>MASSAGE US</h3>
         <p>Donec leo nunc, tincidunt sed consectetur vel.</p>
-        <p className="contact-detail">noreply@noland.com</p>
+        <p className="contact-detail">srisastaassociates@gmail.com</p>
       </div>
     </div>
     </Fragment>
