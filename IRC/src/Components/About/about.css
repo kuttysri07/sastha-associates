@@ -1,0 +1,104 @@
+.aboutcontainer {
+    background-color: #ffc300;
+    padding: 20px; /* Added padding to improve appearance on small screens */
+  }
+  
+  .aboutbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 150px;
+    height: 60vh;
+    flex-wrap: wrap;
+  }
+  
+  /* Default styles for larger screens */
+  .left {
+    flex-basis: 20%;
+  }
+  
+  .left img {
+    width: 550px;
+  }
+  
+  .right {
+    flex-basis: 30%;
+    color: #023e8a;
+  }
+  
+  .right h1 {
+    color: #03045e;
+  }
+  
+  /* Tablets (max-width: 1024px) */
+  @media (max-width: 1024px) {
+    .aboutbox {
+      gap: 100px; /* Reduce the gap for better layout on smaller screens */
+      height: auto; /* Let content define height for medium-sized screens */
+    }
+  
+    .left {
+      flex-basis: 40%; /* Increase space for the image */
+    }
+  
+    .left img {
+      width: 450px; /* Reduce image size slightly */
+    }
+  
+    .right {
+      flex-basis: 50%; /* Increase space for the text */
+    }
+  
+    .right h1 {
+      font-size: 2.5rem; /* Adjust heading size */
+    }
+  }
+  
+  /* Small tablets and large phones (max-width: 768px) */
+  @media (max-width: 768px) {
+    .aboutbox {
+      flex-direction: column; /* Stack content vertically */
+      gap: 50px; /* Reduce the gap further */
+    }
+  
+    .left {
+      flex-basis: 100%;
+    }
+  
+    .left img {
+      width: 100%; /* Make the image responsive */
+      max-width: 350px; /* Set a maximum width */
+    }
+  
+    .right {
+      flex-basis: 100%;
+      text-align: center; /* Center text content on smaller screens */
+    }
+  
+    .right h1 {
+      font-size: 2rem; /* Adjust heading size for better readability */
+    }
+  }
+  
+  /* Small phones (max-width: 480px) */
+  @media (max-width: 480px) {
+    .aboutbox {
+      gap: 30px; /* Reduce the gap further */
+      padding: 10px;
+    }
+  
+    .left img {
+      width: 100%; /* Ensure image scales to the screen width */
+      max-width: 300px; /* Set a smaller maximum width for mobile */
+    }
+  
+    .right h1 {
+      font-size: 1.8rem; /* Adjust heading size for smaller screens */
+    }
+  
+    .right {
+      text-align: center; /* Ensure text is centered */
+      padding: 0 10px; /* Add padding for better spacing */
+    }
+  }
+  
