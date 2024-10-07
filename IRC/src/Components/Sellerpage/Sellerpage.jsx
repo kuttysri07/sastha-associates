@@ -29,7 +29,8 @@ const Sellerpage = () => {
             })
             .catch(err =>  { 
                 console.log(err);
-                setErr(err.response.data.message || "An error occurred")
+                setLoading(false); // Set loading false once data is fetched
+                setErr("Server Error")
               } ); 
                      
     }
@@ -91,7 +92,7 @@ const Sellerpage = () => {
                         </tbody>
 
                 </table>
-                <button className={activeSellerId === data._id ?"morehide":'more'} onClick={() => toggleBtnMore(data._id)}>
+                        <button className={activeSellerId === data._id ?"morehide":'more'} onClick={() => toggleBtnMore(data._id)}>
                              More
                         </button>
                         {activeSellerId === data._id && (

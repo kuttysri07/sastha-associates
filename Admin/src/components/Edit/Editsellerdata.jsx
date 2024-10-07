@@ -50,7 +50,7 @@ useEffect(() => {
     <Fragment>
        <nav className="navbar navbar-expand-lg bg-body-tertiary">
             <div className="container-fluid">
-              <a className="navbar-brand" href="/">DealerSpot</a>
+              <a className="navbar-brand" href="/">Saastha Associates</a>
               <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
               </button>
@@ -78,7 +78,7 @@ useEffect(() => {
     <center><h1>Admin Panel - Editing Page</h1></center> 
    
 
-    <h1 className="buyer-title">Seller</h1>
+    <h1 className="buyer-title">Property </h1>
     {err ? (
         <div style={{ textAlign: 'center', color: 'red', marginTop: '20px' }}>
           <h2>{err}</h2>

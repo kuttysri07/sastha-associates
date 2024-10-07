@@ -11,7 +11,7 @@ const Buyercontrol = () => {
 
       // Fetch user data
   const handleFetch = () => {
-    axios.get(`${APIURL}getdata`)
+    axios.get(`${APIURL}getnewhouserequest`)
       .then(res => {
         console.log(res.data);
         setUserData(res.data);
@@ -32,7 +32,7 @@ const Buyercontrol = () => {
         const newApproveStatus = !currentApproveStatus;
     
         // Update the user approval status in the backend
-        axios.put(`${APIURL}update/${id}`, { approve: newApproveStatus })
+        axios.put(`${APIURL}updatenewhouses/${id}`, { approve: newApproveStatus })
           .then(res => {
             console.log(res.data);
     
@@ -70,68 +70,61 @@ const Buyercontrol = () => {
   <div className="home-container">
         {filteredUsers.map((data, index) => (
           <div className="user-card" key={index}>
-            <label>Id</label>
-            <input type="text" value={data._id} readOnly />
-            <label>Name:</label>
-            <input type="text" value={data.name} readOnly />
-            <label>Phone:</label>
-            <input type="text" value={data.phone} readOnly />
-            <label>Title</label>
-            <input type="text" value={data.title} readOnly />
+           <label>Project Name:</label>
+    <input type="text" value={data.projectName} readOnly />
+    
+    <label>Title:</label>
+    <input type="text" value={data.title} readOnly />
 
-            <label>Description</label>
-            <input type="text" value={data.description} readOnly />
+    <label>Sale Type:</label>
+    <input type="text" value={data.saleType} readOnly />
 
-            <label>Industry</label>
-            <input type="text" value={data.industry} readOnly />
+    <label>Society:</label>
+    <input type="text" value={data.society} readOnly />
 
-            <label>Category</label>
-            <input type="text" value={data.category} readOnly />
+    <label>Approved Status (DTCP / RERA):</label>
+    <input type="text" value={`DTCP: ${data.status.dtcp ? 'Yes' : 'No'} / RERA: ${data.status.rera ? 'Yes' : 'No'}`} readOnly />
 
-           
-            <label>State</label>
-            <input type="text" value={data.state} readOnly />
-            <label>District</label>
-            <input type="text" value={data.district} readOnly />
-           
+    <label>Construction Status:</label>
+    <input type="text" value={data.constructionStatus} readOnly />
 
-            <label>Role:</label>
-              <label>Dealer</label>
-              <input type="checkbox" checked={data.role.dealer} readOnly />
+    <label>House Type:</label>
+    <input type="text" value={data.houseType} readOnly />
 
-              <label>Franchise</label>
-              <input type="checkbox" checked={data.role.franchise} readOnly />
+    <label>Budget:</label>
+    <input type="text" value={data.budget} readOnly />
 
-              <label>Wholesaler</label>
-              <input type="checkbox" checked={data.role.wholesaler} readOnly />
+    <label>Build Up Area:</label>
+    <input type="text" value={data.buildUpArea} readOnly />
 
-              <label>Stockist</label>
-              <input type="checkbox" checked={data.role.stockist} readOnly />
+    <label>Carpet Area:</label>
+    <input type="text" value={data.carpetArea} readOnly />
 
-              <label>Distributor</label>
-              <input type="checkbox" checked={data.role.distributor} readOnly />
+    <label>Total Floors:</label>
+    <input type="text" value={data.totalFloors} readOnly />
 
-              <label>Agency</label>
-              <input type="checkbox" checked={data.role.agency} readOnly />
+    <label>Bedrooms:</label>
+    <input type="text" value={data.bedrooms} readOnly />
 
-              <label>Retailer</label>
-              <input type="checkbox" checked={data.role.retailer} readOnly />
+    <label>Bathrooms:</label>
+    <input type="text" value={data.bathrooms} readOnly />
 
+    <label>Balcony:</label>
+    <input type="text" value={data.balcony} readOnly />
 
-            <label>Space</label>
-            <input type="text" value={data.space} readOnly />
+    <label>Furnishing:</label>
+    <input type="text" value={data.furnishing} readOnly />
 
-            <label>Revenue</label>
-            <input type="text" value={data.revenue} readOnly />
-            <label>Duration</label>
-            <input type="text" value={data.duration} readOnly />
+    <label>Car Parking:</label>
+    <input type="text" value={data.carParking} readOnly />
 
-            <label>Investment Range</label>
-            Min Value{' '}
-            <input type="text" value={data.investmentrange ? data.investmentrange.min : ""} readOnly />
-            - Max Value{' '}
-            <input type="text" value={data.investmentrange ? data.investmentrange.max : ""} readOnly />
+    <label>Facing:</label>
+    <input type="text" value={data.facing} readOnly />
 
+    <label>Description:</label>
+    <textarea value={data.description} readOnly></textarea>
+
+    
             <button 
               className="approve-button" 
               onClick={() => approveHandler(data._id, data.approve)}

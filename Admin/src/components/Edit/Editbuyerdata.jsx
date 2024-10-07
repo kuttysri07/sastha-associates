@@ -13,7 +13,7 @@ const Editbuyerdata = () => {
 
   // Fetch buyer data
   const getBuyerData = () => {
-    axios.get(`${APIURL}getbuyerdata?` + searchparams.toString())
+    axios.get(`${APIURL}getnewhouses?` + searchparams.toString())
       .then(res => {
         if (res.data.length === 0) {
           setErr("No user found"); // Set the message if no users are found
@@ -27,7 +27,7 @@ const Editbuyerdata = () => {
 
   // Delete buyer data
   const deleteHandler = (id) => {
-    axios.delete(`${APIURL}removebuyerregister/${id}`)
+    axios.delete(`${APIURL}deletenewhouses/${id}`)
       .then(result => {
         console.log(result);
         // Remove buyer from state after deletion
@@ -45,7 +45,7 @@ const Editbuyerdata = () => {
     <Fragment>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
-          <a className="navbar-brand" href="/">DealerSpot</a>
+          <a className="navbar-brand" href="/">Saastha Associates</a>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -65,7 +65,7 @@ const Editbuyerdata = () => {
 
       <center><h1>Admin Panel - Editing Page</h1></center>
 
-      <h1 className="buyer-title">Buyers</h1>
+      <h1 className="buyer-title">New Houses </h1>
 
       {/* Display error or "No user found" */}
       {err ? (
@@ -76,9 +76,24 @@ const Editbuyerdata = () => {
         <div className="buyer-container">
           {buyerdata.map((data, index) => (
             <div className="buyer-card" key={index}>
-              <div className="buyer-id">ID: {data._id}</div>
-              <div className="buyer-name">Name: {data.name}</div>
-              <div className="buyer-phone">Phone: {data.numberhide ? "You need to pay" : data.phone}</div>
+                <div className="buyer-field">Project Name: {data.projectName}</div>
+              <div className="buyer-field">Title: {data.title}</div>
+              <div className="buyer-field">Sale Type: {data.saleType}</div>
+              <div className="buyer-field">Society: {data.society}</div>
+              <div className="buyer-field">Status: {data.status.dtcp&& data.status.rera ?"Both RERA AND DTCP":data.status.dtcp ? "DTCP" : data.status.rera ?"RERA":""}</div>
+              <div className="buyer-field">Construction Status: {data.constructionStatus}</div>
+              <div className="buyer-field">House Type: {data.houseType}</div>
+              <div className="buyer-field">Budget: {data.budget}</div>
+              <div className="buyer-field">Build Up Area: {data.buildUpArea}</div>
+              <div className="buyer-field">Carpet Area: {data.carpetArea}</div>
+              <div className="buyer-field">Total Floors: {data.totalFloors}</div>
+              <div className="buyer-field">Bedrooms: {data.bedrooms}</div>
+              <div className="buyer-field">Bathrooms: {data.bathrooms}</div>
+              <div className="buyer-field">Balcony: {data.balcony}</div>
+              <div className="buyer-field">Furnishing: {data.furnishing}</div>
+              <div className="buyer-field">Car Parking: {data.carParking}</div>
+              <div className="buyer-field">Facing: {data.facing}</div>
+              <div className="buyer-field">Description: {data.description}</div>
               <Edit data={data} />
               <button onClick={() => deleteHandler(data._id)}>Delete</button>
             </div>

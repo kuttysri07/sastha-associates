@@ -11,6 +11,7 @@ const url = process.env.REACT_APP_API_URL;
 const Sellerform = () => {
   const [uploading, setUploading] = useState(false);
   const[uploadimage ,setUploadImage] = useState('');
+
   
   const [state ,setState] = useState('');
   const [district ,setDistrict] = useState('');
@@ -54,6 +55,7 @@ const Sellerform = () => {
   const [loading, setLoading] = useState(false); // Track loading state
   const [submit, setSubmit] = useState(false);
   const [err, setErr] = useState('');
+
 
   // const navigate = useNavigate();
 
@@ -137,8 +139,13 @@ const handleChangeImg = async (e) => {
       <Nav2 />
       <form className="sellerform-form" onSubmit={submithandler}>
         <h2>Register Properties Information</h2> <br />
+            
+  <label for="file-upload" className="custom-file-upload"> Upload Image 
+  </label>
+  <input  id="file-upload" type="file" multiple onChange={handleChangeImg} />
+ <center><p>{ uploading ? "Please wait Uploading Image " : ""} </p> </center>
 
-        <input type="file" onChange={handleChangeImg} />
+
         <label className="sellerform-label">State</label>
 
         <select className="sellerform-input" value={state} onChange={(e) => setState(e.target.value)}>

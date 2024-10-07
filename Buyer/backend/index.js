@@ -27,11 +27,32 @@ app.post("/propertyregister", async (req, res) => {
 });
 
 
+app.post("/newhousesregister", async (req, res) => {
+  try {
+    const newUser = await NewHouseModel.create(req.body);  // Create a new user in the database
+    res.status(201).json(newUser);  // Respond with the created user
+  } catch (error) {
+    console.error("Signup error:", error.message);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+
+
   app.put('/updateproperty/:id', (req, res) => {
     const { id } = req.params;
     const { approve } = req.body;
   
     PropertyModel.findByIdAndUpdate(id, { approve}, { new: true })
+        .then(updatedUser => res.json(updatedUser))
+        .catch(err => res.status(500).json({ error: err.message }));
+  });
+
+  app.put('/updatenewhouses/:id', (req, res) => {
+    const { id } = req.params;
+    const { approve } = req.body;
+  
+    NewHouseModel.findByIdAndUpdate(id, { approve}, { new: true })
         .then(updatedUser => res.json(updatedUser))
         .catch(err => res.status(500).json({ error: err.message }));
   });
@@ -46,12 +67,22 @@ app.post("/propertyregister", async (req, res) => {
       res.status(500).json({ error: "Internal server error" });
     }
   });
+  app.delete("/deletenewhouses/:id", async (req, res) => {
+    const {id } = req.params
+    try {
+      const removeUser = await NewHouseModel.findByIdAndDelete(id);  
+      res.status(201).json(removeUser);  
+    } catch (error) {
+      console.error("Signup error:", error.message);
+      res.status(500).json({ error: "Internal server error" });
+    }
+  });
 
 
   app.get("/getproperty", async (req, res) => {
     try {
       const query = {
-        approve: false // Ensure only approved users are fetched
+        approve: true // Ensure only approved users are fetched
     };
      // Add filters for name and/or state if provided
      if (req.query.industry) {
@@ -90,7 +121,7 @@ if (req.query.district) {
   app.get("/getnewhouses", async (req, res) => {
     try {
       const query = {
-        approve: false // Ensure only approved users are fetched
+        approve: true // Ensure only approved users are fetched
     };
      // Add filters for name and/or state if provided
      if (req.query.industry) {
@@ -139,6 +170,17 @@ if (req.query.district) {
     }
   });
 
+  
+  app.get("/getnewhouserequest", async (req, res) => {
+    try {
+   
+      const getUser = await NewHouseModel.find({approve : false});
+      res.json(getUser); // Send the retrieved users as JSON response
+    } catch (error) {
+      console.log(error.message);
+      res.status(500).json({ error: "Internal server error" }); // Optional: handle error and send a response
+    }
+  });
 
   app.put('/editproperty/:id', (req, res) => {
   const { id } = req.params;
@@ -148,6 +190,17 @@ if (req.query.district) {
       .then(updatedUser => res.json(updatedUser))
       .catch(err => res.status(500).json({ error: err.message }));
 });
+
+app.put('/editnewhouses/:id', (req, res) => {
+  const { id } = req.params;
+  const  updatenewhouse = req.body;
+
+  NewHouseModel.findByIdAndUpdate(id, updatenewhouse, { new: true })
+      .then(updatedUser => res.json(updatedUser))
+      .catch(err => res.status(500).json({ error: err.message }));
+});
+
+
   
 
 

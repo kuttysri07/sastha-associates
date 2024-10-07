@@ -18,7 +18,7 @@ const Buyerpage = () => {
 
     useEffect(() => {
       const getbuyerdata = () => {
-        axios.get(`${url}getnewhouses` + searchparams.toString())
+        axios.get(`${url}getnewhouses?` + searchparams.toString())
             .then(res => {
                 if (res.data.length === 0) {
                   setErr("No user found"); // Set the message if no users are found
@@ -33,7 +33,8 @@ const Buyerpage = () => {
             })
             .catch(err =>  { 
               console.log(err);
-              setErr(err.response.data.message || "An error occurred")
+              setLoading(false); // Set loading false once data is fetche
+              setErr("Server Error"); // Set the message if no users are found
             } );           
     };
         getbuyerdata();
@@ -65,98 +66,103 @@ const Buyerpage = () => {
       ):(
         <div className="buyer-container">
 
-                {buyerdata.map((data) => (
-                    <div className="buyer-card" key={data._id}>
-                        
-                            <table className="details-table">
-                                <tbody>
-                                <tr>
-                                    <th>Title</th>
-                                    <td>{data.title}</td>
-                                </tr>
-                                
-                                <tr>
-                                    <th>Industry/Category</th>
-                                    <td>{data.industry} / {data.category}</td>
-                                </tr>
-                                <tr>
-                                <th>Role Looking for</th>
-                                      <td>
-                                        {(() => {
-                                          const roles = [];
+{buyerdata.map((data) => (
+  <div className="buyer-card" key={data._id}>
+      <center><img className='img'  src={data.uploadimage} alt="" /></center>
+                      <table className="details-table">  
+                        <tbody>  
+                          <tr>
+                            <th>Project Name</th>
+                            <td>{data.projectName}</td>
+                          </tr>
+                          <tr>
+                            <th>Title</th>
+                            <td>{data.title}</td>
+                          </tr>
+                          <tr>
+                            <th>Sale Type</th>
+                            <td>{data.saleType}</td>
+                          </tr>
+                          <tr>
+                            <th>Society</th>
+                            <td>{data.society}</td>
+                          </tr>
+                          </tbody>
+                          </table>
 
-                                          if (data.role.dealer) roles.push("Dealer");
-                                          if (data.role.franchise) roles.push("Franchise");
-                                          if (data.role.wholesaler) roles.push("Wholesaler");
-                                          if (data.role.stockist) roles.push("Stockist");
-                                          if (data.role.distributor) roles.push("Distributor");
-                                          if (data.role.agency) roles.push("Agency");
-                                          if (data.role.retailer) roles.push("Retailer");
-
-                                          return roles.length > 0 ? roles.join(", ") : "No Roles Selected";
-                                        })()}
-                                      </td>
-
-                                </tr>
-                                <tr>
-                                    <th>Investment</th>
-                                    <td>{data.investmentrange.min}</td>
-                                </tr>
-                               
-                                </tbody>
-                            </table>
-                       
-
-
-                        <button className={activeBuyerId === data._id ?"morehide":'more'} onClick={() => toggleBtnMore(data._id)}>
+                          <button className={activeBuyerId === data._id ?"morehide":'more'} onClick={() => toggleBtnMore(data._id)}>
                              More
-                        </button>
+                          </button>
+                          {activeBuyerId === data._id && (
+                          <table className="details-table">
+                          <tbody>
+                          <tr>
+                            <th>Approved Status</th>
+                            <td> {data.status.rera && data.status.dtcp? "DTCP AND RERA" : data.status.dtcp ? 'DTCP' : data.status.rera ? 'RERA':" NO DTCP AND RERA"}</td>
+                          </tr>
+                          <tr>
+                            <th>Construction Status</th>
+                            <td>{data.constructionStatus}</td>
+                          </tr>
+                          <tr>
+                            <th>House Type</th>
+                            <td>{data.houseType}</td>
+                          </tr>
+                          <tr>
+                            <th>Budget</th>
+                            <td>{data.budget}</td>
+                          </tr>
+                          <tr>
+                            <th>Build Up Area</th>
+                            <td>{data.buildUpArea}</td>
+                          </tr>
+                          <tr>
+                            <th>Carpet Area</th>
+                            <td>{data.carpetArea}</td>
+                          </tr>
+                          <tr>
+                            <th>Total Floors</th>
+                            <td>{data.totalFloors}</td>
+                          </tr>
+                          <tr>
+                            <th>Bedrooms</th>
+                            <td>{data.bedrooms}</td>
+                          </tr>
+                          <tr>
+                            <th>Bathrooms</th>
+                            <td>{data.bathrooms}</td>
+                          </tr>
+                          <tr>
+                            <th>Balcony</th>
+                            <td>{data.balcony}</td>
+                          </tr>
+                          <tr>
+                            <th>Furnishing</th>
+                            <td>{data.furnishing}</td>
+                          </tr>
+                          <tr>
+                            <th>Car Parking</th>
+                            <td>{data.carParking}</td>
+                          </tr>
+                          <tr>
+                            <th>Facing</th>
+                            <td>{data.facing}</td>
+                          </tr>
+                          <tr>
+                            <th>Description</th>
+                            <td>{data.description}</td>
+                          </tr>
+                          <tr>
+                            <th>Approved</th>
+                            <td>{data.approve ? 'Yes' : 'No'}</td>
+                          </tr>
+                        </tbody>
+                      </table>)}
 
-                        {/* Conditionally show more details if this buyer's ID matches the activeBuyerId */}
-                        {activeBuyerId === data._id && (
-                            <table className="details-table">
-                              <tbody>
-                                <tr>
-                                  <th>Description:</th>
-                                  <td>{data.description}</td>
-                                </tr>
-                                <tr>
-                                  <th>Investment Minimum:</th>
-                                  <td>{data.investmentrange.min}</td>
-                                </tr>
-                                <tr>
-                                  <th>Investment Maximum:</th>
-                                  <td>{data.investmentrange.max}</td>
-                                </tr>
-                                <tr>
-                                  <th>Space Have:</th>
-                                  <td>{data.space}</td>
-                                </tr>
-                                <tr>
-                                  <th>State:</th>
-                                  <td>{data.state}</td>
-                                </tr>
-                                <tr>
-                                  <th>District:</th>
-                                  <td>{data.district}</td>
-                                </tr>
-                                <tr>
-                                  <th>Revenue:</th>
-                                  <td>{data.revenue}</td>
-                                </tr>
-                                <tr>
-                                  <th>Start Duration:</th>
-                                  <td>{data.duration}</td>
-                                </tr>
-                                <tr>
-                                  <th>Phone:</th>
-                                  <td>{data.numberhide ? "You need to pay" : data.phone}</td>
-                                </tr>
-                              </tbody>
-                            </table>
-                        )}
                     </div>
-                ))}
+                  ))}
+
+                
             </div>
       )}
 
