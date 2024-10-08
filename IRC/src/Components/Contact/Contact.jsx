@@ -15,7 +15,6 @@ const Contact = () => {
           <img src={location} alt="Visit Us" />
         </div>
         <h3>VISIT US</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         <p className="contact-detail">Thindal, Erode </p>
       </div>
 
@@ -24,17 +23,21 @@ const Contact = () => {
           <img src={phone} alt="Call Us" />
         </div>
         <h3>CALL US</h3>
-        <p>Jio Sarani Office</p>
-        <p className="contact-detail">+919363412625, 8643013005</p>
+        <p>Saastha Associates Office</p>
+       
+        <a href="tel:+919363412625 " className='contact-detail'> +91 93634 12625  </a> <br />
+
+        <a href="tel:+918643013005 " className='contact-detail'> +91 86430 13005</a>
       </div>
 
       <div className="contact-item">
         <div className="icon">
           <img src={mail} alt="Message Us" />
         </div>
-        <h3>MASSAGE US</h3>
-        <p>Donec leo nunc, tincidunt sed consectetur vel.</p>
-        <p className="contact-detail">srisastaassociates@gmail.com</p>
+        <h3>MAIL US</h3>
+        <p className="contact-detail"></p>
+
+        <a href="mailto:info@saastha.com" className='contact-detail'>srisastaassociates@gmail.com</a>
       </div>
     </div>
     </Fragment>
