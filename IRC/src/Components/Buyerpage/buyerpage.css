@@ -67,7 +67,7 @@
 
 /* More button styles */
 .more {
-  background: linear-gradient(to right, #ff8800, #ffcc00);
+  background: linear-gradient(to right, #03045e, #0096c7);
   color: white;
   padding: 10px 20px;
   border: none;
@@ -76,10 +76,6 @@
   margin-top: 15px;
   font-weight: bold;
   transition: background 0.3s ease;
-}
-
-.more:hover {
-  background: linear-gradient(to right, #ff7700, #ffb300);
 }
 
 .morehide {
@@ -99,7 +95,7 @@
   width: 300px;
   padding: 10px 20px;
   border-radius: 25px;
-  background-color: rgba(255, 234, 0, 0.75);
+  background-color: #ade8f4;
   color: black;
   border: none;
   outline: none;
@@ -107,7 +103,7 @@
 
 .search button {
   padding: 10px 25px;
-  background-color: #ff8800;
+  background-color: #03045e;
   border: none;
   border-radius: 25px;
   font-weight: bold;
@@ -116,7 +112,7 @@
 }
 
 .search button:hover {
-  background-color: black;
+  background-color: #0096c7;
   color: white;
 }
 

@@ -56,7 +56,7 @@ const Buyerpage = () => {
 
             <Nav2 />
 
-            <h1 className="buyer-title">Buyers</h1>
+            <h1 className="buyer-title">New Houses</h1>
               <Search />
 
             {err ? (

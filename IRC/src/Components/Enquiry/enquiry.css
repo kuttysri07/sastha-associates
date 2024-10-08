@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   height: 90vh;
-  background-color: #ffc300; /* Light purple background */
+  background-color: #ade8f4; /* Light purple background */
   padding: 20px; /* Added padding for smaller screens */
 }
 
@@ -67,7 +67,7 @@ textarea.form-control {
 .submit-btn {
   display: inline-block;
   width: 100%;
-  background-color: #ff9500;
+  background-color: #023e8a;
   color: #fff;
   padding: 15px;
   border: none;
@@ -78,7 +78,7 @@ textarea.form-control {
 }
 
 .submit-btn:hover {
-  background-color: #ff7b00;
+  background-color: #0077b6;
 }
 
 /* Media queries for responsiveness */

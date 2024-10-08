@@ -25,7 +25,7 @@ const Nav2 = () => {
     <Fragment>
       <nav className='navcontainer'>
         <img className='hamburger' src={hamburger} alt="" onClick={menutoggle} />
-        <h1>Sastha Associates</h1>
+        <h1>Sri Sastha Associates</h1>
         <ul className={menu ? 'reset' : 'navcontent'}>
           <li><Link to={"/"} style={{ color: "#03045e", textDecoration: "none" }}>Home</Link></li>
 

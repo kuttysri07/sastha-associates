@@ -16,7 +16,7 @@ const Nav = () => {
     <Fragment>
         <nav className='navcontainer'>
           <img className='hamburger' src={hamburger} alt=""  onClick={menutoggle}/>
-            <h1>Sastha Associates</h1>
+            <h1>Sri Sastha Associates</h1>
             <ul className={menu ? 'reset': 'navcontent'}>
             <li>
             <ScrollLink
