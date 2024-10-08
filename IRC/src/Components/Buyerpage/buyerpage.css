@@ -132,7 +132,7 @@
   background-image: url(../Assets/loader.gif);
   background-repeat: no-repeat;
   background-position: center;
-  background-color: #ffca03;
+  background-color: white;
 }
 
 /* Media query for tablet devices */
@@ -188,4 +188,6 @@
     width: 100%;
     margin-top: 10px;
   }
+  
+  
 }
